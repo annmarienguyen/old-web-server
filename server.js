@@ -4,6 +4,7 @@ import apiRouter from './routes/api.js';
 import { join } from 'path';
 
 const app = express();
+app.set("view engine", "ejs");
 const PORT = 3000;
 
 app.set('view engine', 'ejs');
@@ -98,6 +99,11 @@ app.get('/entries:id', (req, res) => {
 });
 app.use((req, res) => {
   res.status(404).send('Page not found.');
+});
+
+// Lab 02
+app.get("/about", (req, res) => {
+  res.render("about", { title: "About" });
 });
 
 app.listen(PORT, () => {
